@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from constants import SERVER_URL, PORT, ENV
 from apps.calculator.route import router as calculator_router
+from fastapi.staticfiles import StaticFiles
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -26,6 +27,7 @@ async def health():
 
 
 app.include_router(calculator_router, prefix="/calculate", tags=["calculate"])
+app.mount("/", StaticFiles(directory="math-app/dist", html=True))
 
     
     

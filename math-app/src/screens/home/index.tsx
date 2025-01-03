@@ -193,7 +193,7 @@ export default function Home() {
       }
     }
   };
-  const stopDrawing = (e: React.MouseEvent<HTMLCanvasElement>) => {
+  const stopDrawing = (_e: React.MouseEvent<HTMLCanvasElement>) => {
     setUseDrawing(false);
   };
 
@@ -269,7 +269,7 @@ export default function Home() {
               : undefined
           }
           defaultPosition={latexPosition}
-          onStop={(e, data) => setLatexPosition({ x: data.x, y: data.y })}
+          onStop={(_e, data) => setLatexPosition({ x: data.x, y: data.y })}
         >
           <div
             ref={(el) => (draggableRefs.current[index] = el)}

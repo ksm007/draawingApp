@@ -10,4 +10,16 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    outDir: 'dist', // Output directory for the production build
+    emptyOutDir: true,
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8000', // Proxy API requests to FastAPI during development
+        changeOrigin: true,
+      },
+    },
+  },
 })
